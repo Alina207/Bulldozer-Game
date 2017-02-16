@@ -2,7 +2,7 @@ function SokobanGame() {
   this.board = [                      // ROW Index
     [ "w",  "w",  "w",  "w",  "w",  "w",  "w",  "w",  "w",  "w",  "w",  "w",  "w",  "w",  "w",  "w" ], // 0
     [ "w",  null, null, null, null, null, null, null, null, null, null, null, null, null, null, "w" ], // 1
-    [ "w",  null, null, null, null, null, null, null, "s", null, null, null, null, null, null, "w" ], // 2
+    [ "w",  null, null, null, null, null, null, null, "s", null, null, null, null, null, null,  "w" ], // 2
     [ "w",  null, null, null, null, "t" , null, null, "b" , null, "s" , null, null, null, null, "w" ], // 3
     [ "w",  null, null, null, null, null, null, null, null, null, null, null, null, null, null, "w" ], // 4
     [ "w",  null, null, null, null, null, null, null, null, null, null, null, null, null, null, "w" ], // 5
@@ -43,13 +43,16 @@ SokobanGame.prototype.movement = function () {
   console.log("The bulldozer position is:" + currentLoc);
     switch(this.direction) {
       case 'Up':
-        if ((this.board[row - 1][col]) === null){
+        if ((this.board[row - 1][col]) === null) {
           this.board[row][col] = null;
           this.board[row - 1 ][col] = "b";
         } else if ((this.board[row - 1][col]) === "s"){
           this.board[row][col] = null;
           this.board[row - 1 ][col] = "b";
           this.board[row - 2 ][col] = "s";
+        } else if ((this.board[row - 1][col]) === "t"){
+          this.board[row][col] = null;
+          this.board[row - 1 ][col] = "b";
         } else {
           return;
         }
@@ -62,6 +65,9 @@ SokobanGame.prototype.movement = function () {
           this.board[row][col] = null;
           this.board[row][col + 1] = "b";
           this.board[row][col + 2] = "s";
+        } else if ((this.board[row][col + 1]) === "t"){
+          this.board[row][col] = null;
+          this.board[row][col + 1] = "b";
         } else {
           return;
         }
@@ -74,6 +80,9 @@ SokobanGame.prototype.movement = function () {
           this.board[row][col] = null;
           this.board[row + 1 ][col] = "b";
           this.board[row + 2 ][col] = "s";
+        } else if ((this.board[row + 1][col]) === "t"){
+          this.board[row][col] = null;
+          this.board[row + 1 ][col] = "b";
         } else {
           return;
         }
@@ -86,12 +95,16 @@ SokobanGame.prototype.movement = function () {
           this.board[row][col] = null;
           this.board[row][col - 1] = "b";
           this.board[row][col - 2] = "s";
+        } else if ((this.board[row][col - 1]) === "t"){
+          this.board[row][col] = null;
+          this.board[row][col - 1] = "b";
         } else {
           return;
         }
         break;
     }
     console.log("The new bulldozer position is: " + currentLoc);
+    this.updateBoard;
   };
 
 
@@ -116,7 +129,6 @@ SokobanGame.prototype.updateBoard = function () { // just prints out everything 
     row.forEach(function (cell, colIndex) {
       if (cell !== null && cell !== "b" ) {
         items.push( [rowIndex, colIndex, cell] );
-
       }
     });
   });

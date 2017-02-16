@@ -21,7 +21,8 @@ body{
   top: 5%;
   left: 4%;
   position: relative;
-  background: rgba(87, 152, 0, .9);
+  background-image:url("../Images/grass.png");
+  background-repeat: repeat;
   border-radius: 10px;
   box-shadow: 3px 3px 20px 3px rgba(0,0,0,0.31);
 }
@@ -44,8 +45,10 @@ body{
 }
 
 .dozer {
+  height: 50px;
+  width: 50px;
   background: url("../Images/dozer.png");
-  background-repeat: none;
+  background-repeat: no-repeat;
   background-size: contain;
   transform: rotate(0deg);
 }
