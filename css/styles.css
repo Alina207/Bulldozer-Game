@@ -53,20 +53,20 @@ body{
 
 
 .stone {
-  background: url("../images/stoneblock2.png");
+  background: url("../Images/stoneblock2.png");
   background-repeat: none;
   background-size: contain;
 }
 
 .wall {
-  background: url("../images/dirtblock.png");
+  background: url("../Images/dirtblock.png");
   background-repeat: none;
   background-size: contain;
 }
 
 
 .target {
-  background: url("../images/target.png");
+  background: url("../Images/target.png");
   background-repeat: none;
   background-size: contain;
 }
