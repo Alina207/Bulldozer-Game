@@ -11,6 +11,7 @@ function SokobanGame() {
     //   0     1     2     3     4    5     6     7    8     9    10     11   12     13   14    15
 ]; // COL Index
 this.direction = "Up";
+// this.movement = "";
 }
 
 
@@ -37,36 +38,36 @@ SokobanGame.prototype.changeDirection = function (x) {
 // Movement //
 SokobanGame.prototype.movement = function () {
   var currentLoc = this._getCurrentLocation();
+  var row = currentLoc[0];
+  var col = currentLoc[1];
   console.log("The bulldozer position is:" + currentLoc);
     switch(this.direction) {
-      case 'Up':      //x (colIndex)  //y (rowIndex)
-        if ((this.board[currentLoc[0]][currentLoc[1] + 1]) === null){
-          this.board[currentLoc[0]][currentLoc[1]] = null;
-          this.board[currentLoc[0]][currentLoc[1] + 1] = "b";
+      case 'Up':
+        if ((this.board[row - 1][col]) === null){
+          this.board[row][col] = null;
+          this.board[row - 1 ][col] = "b";
         } else {
           return;
         }
         break;
       case 'Right':
-        if ((this.board[currentLoc[1] + 1][currentLoc[0]]) === null){
-          this.board[currentLoc[1]][currentLoc[0]] = null;
-          this.board[currentLoc[1] + 1][currentLoc[0]] = "b";
+        if ((this.board[row][col + 1]) === null){
+          this.board[row][col] = null;
+          this.board[row][col + 1] = "b";
         } else {
           return;
         }
         break;
       case 'Down':
-        if ((this.board[currentLoc[0]][currentLoc[1] - 1]) === null){
-          this.board[currentLoc[0]][currentLoc[1]] = null;
-          this.board[currentLoc[0]][currentLoc[1] - 1] = "b";
-        } else {
-          return;
+        if ((this.board[row + 1][col]) === null){
+          this.board[row][col] = null;
+          this.board[row + 1 ][col] = "b";
         }
         break;
       case 'Left':
-        if ((this.board[currentLoc[1] - 1][currentLoc[0]]) === null){
-          this.board[currentLoc[1]][currentLoc[0]] = null;
-          this.board[currentLoc[1] - 1][currentLoc[0]]= "b";
+        if ((this.board[row][col - 1]) === null){
+          this.board[row][col] = null;
+          this.board[row][col - 1] = "b";
         } else {
           return;
         }
@@ -82,13 +83,13 @@ SokobanGame.prototype._getCurrentLocation = function () {
   this.board.forEach(function (row, rowIndex) {
     row.forEach(function (cell, colIndex) {
       if (cell === "b") {
-        return currentLoc;
+        return [rowIndex, colIndex];
       }
     });
   });
 };
 
-SokobanGame.prototype._renderBoard = function () { // just prints out everything in each row
+SokobanGame.prototype.updateBoard = function () { // just prints out everything in each row
   this.board.forEach(function(row) {
     console.log(row);
   });

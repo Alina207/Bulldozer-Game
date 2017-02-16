@@ -19,18 +19,19 @@ $(document).ready(function () {
 // 4. Keyboard events
   // 4a. Prevent arrow key scrolling
   function arrowControl (ev) {
-    var acceptableKeys = [ 37, 65, 38, 87, 39, 68, 40, 83 ];
+    var acceptableKeys = [ 37, 65, 38, 87, 39, 68, 40, 83, 16];
     if (!acceptableKeys.includes(ev.keyCode)) {
       return;
     }
     ev.preventDefault();
   // 4b. Move object based on keypresses
     switch (ev.keyCode) {
-      // case for space bar
+      case 16: // shift (move forward)
+        mySokobanGame.movement("b");
+        break;
       case 37:  // left arrow
       case 65:  // a
         mySokobanGame.changeDirection("Left");
-         // append css to rotate 270
         break;
       case 38:  // up arrow (Forward key)
       case 87:  // w
@@ -83,10 +84,6 @@ function updateBoard () {
       }
   });
 
-function moveDozer () {
-
-  mySokobanGame.movement("Left");
-}
 
 });
 }
