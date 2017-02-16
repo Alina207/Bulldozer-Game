@@ -77,6 +77,8 @@ function updateBoard () {
       //   rowDiv.append('<div class="tile wall"></div> ');
       } else if (cell === "t") {
         rowDiv.append('<div class="tile target"></div> ');
+      } else if (cell === "w") {
+        rowDiv.append('<div class="tile wall"></div> ');
       } else if (cell === "s") {
         rowDiv.append('<div class="tile stone"></div> ');
       } else {

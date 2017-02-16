@@ -5,7 +5,7 @@ function SokobanGame() {
     [ "w",  null, null, null, null, null, null, null, "s", null, null, null, null, null, null,  "w" ], // 2
     [ "w",  null, null, null, null, "t" , null, null, "b" , null, "s" , null, null, null, null, "w" ], // 3
     [ "w",  null, null, null, null, null, null, null, null, null, null, null, null, null, null, "w" ], // 4
-    [ "w",  null, null, null, null, null, null, null, null, null, null, null, null, null, null, "w" ], // 5
+    [ "w",  null, null, "t", null, null, null, null, null, null, null, null, null, null, null, "w" ], // 5
     [ "w",  null, null, null, null, null, null, null, null, null, null, null, null, null, null, "w" ], // 6
     [ "w",  "w",  "w",  "w",  "w",  "w",  "w",  "w",  "w",  "w",  "w",  "w",  "w",  "w",  "w",  "w" ], // 7
     //   0     1     2     3     4    5     6     7    8     9    10     11   12     13   14    15
@@ -104,7 +104,6 @@ SokobanGame.prototype.movement = function () {
         break;
     }
     console.log("The new bulldozer position is: " + currentLoc);
-    this.updateBoard;
   };
 
 

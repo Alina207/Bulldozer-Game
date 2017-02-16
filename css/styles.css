@@ -38,15 +38,13 @@ body{
 .tile {
   height: 50px;
   width: 50px;
-  border: 1px dotted white;
+  /*border: 1px dotted white;*/
   display: inline-block;
   position: relative;
 
 }
 
 .dozer {
-  height: 50px;
-  width: 50px;
   background: url("../Images/dozer.png");
   background-repeat: no-repeat;
   background-size: contain;
