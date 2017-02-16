@@ -45,7 +45,7 @@ body{
 }
 
 .dozer {
-  background: url("../Images/dozer.png");
+  background: url("../images/dozer.png");
   background-repeat: no-repeat;
   background-size: contain;
   transform: rotate(0deg);
