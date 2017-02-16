@@ -3,7 +3,7 @@ function SokobanGame() {
     [ "w",  "w",  "w",  "w",  "w",  "w",  "w",  "w",  "w",  "w",  "w",  "w",  "w",  "w",  "w",  "w" ], // 0
     [ "w",  null, null, null, null, null, null, null, null, null, null, null, null, null, null, "w" ], // 1
     [ "w",  null, null, null, null, null, null, null, null, null, null, null, null, null, null, "w" ], // 2
-    [ "w",  null, null, null, null, "t" , null, null, "d" , null, "s" , null, null, null, null, "w" ], // 3
+    [ "w",  null, null, null, null, "t" , null, null, "b" , null, "s" , null, null, null, null, "w" ], // 3
     [ "w",  null, null, null, null, null, null, null, null, null, null, null, null, null, null, "w" ], // 4
     [ "w",  null, null, null, null, null, null, null, null, null, null, null, null, null, null, "w" ], // 5
     [ "w",  null, null, null, null, null, null, null, null, null, null, null, null, null, null, "w" ], // 6
@@ -38,6 +38,7 @@ SokobanGame.prototype.changeDirection = function (x) {
 // Movement //
 SokobanGame.prototype.movement = function () {
   var currentLoc = this._getCurrentLocation();
+  console.log(currentLoc);
   var row = currentLoc[0];
   var col = currentLoc[1];
   console.log("The bulldozer position is:" + currentLoc);
@@ -80,13 +81,17 @@ SokobanGame.prototype.movement = function () {
 
 // Loop through all the positions and check if they are empty, any that are empty are stored in emptyTiles
 SokobanGame.prototype._getCurrentLocation = function () {
+  var gottenLoc;
   this.board.forEach(function (row, rowIndex) {
     row.forEach(function (cell, colIndex) {
       if (cell === "b") {
-        return [rowIndex, colIndex];
+        console.log("Found it!");
+        gottenLoc = [rowIndex, colIndex];
       }
     });
   });
+
+  return gottenLoc;
 };
 
 SokobanGame.prototype.updateBoard = function () { // just prints out everything in each row

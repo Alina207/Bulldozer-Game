@@ -58,7 +58,7 @@ function updateBoard () {
     var rowDiv = $('<div class="row"></div>');
     $('.map').append(rowDiv);
     row.forEach(function (cell, cellIndex) {
-      if (cell === "d") {
+      if (cell === "b") {
         var dozerEl = $('<div/>').addClass('tile').addClass('dozer');
         if (mySokobanGame.direction === 'Up') {
           dozerEl.css('transform', 'rotate(0deg)');
