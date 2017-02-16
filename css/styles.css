@@ -1,0 +1,74 @@
+body{
+  /*display:inline-block;*/
+  background-image:url("../Images/background.jpg");
+}
+
+.mapWrap {
+  width: 1000px;
+  height: 500px;
+  position: fixed;
+  left: 20%;
+  top: 10%;
+  background: rgba(255,255,255, 0.5);
+  margin: 0 auto;
+  border-radius: 30px;
+  box-shadow: 3px 3px 20px 3px rgba(0,0,0,0.1);
+}
+
+.map {
+  width: 91%;
+  height: 90%;
+  top: 5%;
+  left: 4%;
+  position: relative;
+  background: rgba(87, 152, 0, .9);
+  border-radius: 10px;
+  box-shadow: 3px 3px 20px 3px rgba(0,0,0,0.31);
+}
+
+.row {
+  width: 100%;
+  display: block;
+  float: left;
+  left: 1%;
+  position: relative;
+}
+
+.tile {
+  height: 50px;
+  width: 50px;
+  border: 1px dotted white;
+  display: inline-block;
+  position: relative;
+
+}
+
+.dozer {
+  background: url("../Images/dozer.png");
+  background-repeat: none;
+  background-size: contain;
+}
+
+
+.stone {
+  background: url("../images/stoneblock2.png");
+  background-repeat: none;
+  background-size: contain;
+}
+
+.wall {
+  background: url("../images/dirtblock.png");
+  background-repeat: none;
+  background-size: contain;
+}
+
+
+.target {
+  background: url("../images/target.png");
+  background-repeat: none;
+  background-size: contain;
+}
+
+.rotate {
+  transform: rotate();
+}
