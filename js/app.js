@@ -27,7 +27,7 @@ $(document).ready(function () {
   // 4b. Move object based on keypresses
     switch (ev.keyCode) {
       case 16: // shift (move forward)
-        mySokobanGame.movement("b");
+        mySokobanGame.movement();
         break;
       case 37:  // left arrow
       case 65:  // a
@@ -58,7 +58,7 @@ function updateBoard () {
     var rowDiv = $('<div class="row"></div>');
     $('.map').append(rowDiv);
     row.forEach(function (cell, cellIndex) {
-      if ((cell === "b") || (cell === "bt")) {
+      if ((cell === "b") || (cell === "bt") ) {
         var dozerEl = $('<div/>').addClass('tile').addClass('dozer');
         if (mySokobanGame.direction === 'Up') {
           dozerEl.css('transform', 'rotate(0deg)');

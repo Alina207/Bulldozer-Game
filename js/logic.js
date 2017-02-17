@@ -41,7 +41,6 @@ SokobanGame.prototype.movement = function () {
   var row = currentLoc[0];
   var col = currentLoc[1];
   var infrontRow, infrontCol, lastRow, lastCol;
-  console.log("The bulldozer position is:" + currentLoc);
     switch(this.direction) {
       case 'Up':
         infrontRow = row - 1;
@@ -68,41 +67,56 @@ SokobanGame.prototype.movement = function () {
         lastCol = col - 2;
         break;
     }
-    console.log("The new bulldozer position is: " + currentLoc);
+    console.log("The bulldozer position is:" + currentLoc);
 
     var infront = this.board[infrontRow][infrontCol];
     var last = this.board[lastRow][lastCol];
-
+console.log("what was in front was: " + infront);
+console.log("what was really in front was: " + last);
     if (this.isInvalidMove(infront, last) === true) {
       return;
     }
-
-    // where dozer came from
+    console.log("Current loc is: " +currentLoc);
+      // where dozer came from
     if (this.board[row][col] === "b") {
       this.board[row][col] = null;
-    } else if ((this.board[row][col] === "bt") || (this.board[row][col] === "st")) {
+    } else if ((this.board[row][col] === "bt")) {
       this.board[row][col] = "t";
     }
 
     // what's in front
-    if (this.board[infrontRow][infrontCol] === null) {
-      this.board[infrontRow][infrontCol] = "b";
-    }
-
-    if (this.board[infrontRow][infrontCol] === "t") {
+    if (infront === "t") {
       this.board[infrontRow][infrontCol] = "bt";
     }
 
-    if (this.board[infrontRow][infrontCol] === "s") {
+    if (infront === null) {
+      console.log("there is null in front");
+      this.board[infrontRow][infrontCol] = "b";
+    }
+
+
+    if (infront === "s" ) {
       if (this.board[lastRow][lastCol] === null) {
         this.board[lastRow][lastCol] = "s";
+
       } else if (this.board[lastRow][lastCol] === "t") {
         this.board[lastRow][lastCol] = "st";
       }
-      this.board[infrontRow][infrontCol] = "b";
+    this.board[infrontRow][infrontCol] = "b";
     }
+
+    if ( infront === "st") {
+      if (this.board[lastRow][lastCol] === null) {
+        this.board[lastRow][lastCol] = "s";
+
+      } else if (this.board[lastRow][lastCol] === "t") {
+        this.board[lastRow][lastCol] = "st";
+      }
+    this.board[infrontRow][infrontCol] = "bt";
+    }
+
   };
-  
+
 
 SokobanGame.prototype.isInvalidMove = function (infrontCell, lastCell) {
   if (infrontCell === "w") {
@@ -118,30 +132,29 @@ SokobanGame.prototype.isInvalidMove = function (infrontCell, lastCell) {
 
 // Loop through all the positions and find bulldozer location
 SokobanGame.prototype._getCurrentLocation = function () {
-  var gottenLoc;
+  var currentLocResult;
   this.board.forEach(function (row, rowIndex) {
     row.forEach(function (cell, colIndex) {
-      if (cell === "b") {
-        gottenLoc = [rowIndex, colIndex];
+      if (cell === "b" || cell === "bt") {
+        currentLocResult = [rowIndex, colIndex];
       }
     });
   });
-
-  return gottenLoc;
+  return currentLocResult;
 };
 
-SokobanGame.prototype.findItems = function () {
-  var items = [];
-  this.board.forEach(function (row, rowIndex) {
-    row.forEach(function (cell, colIndex) {
-      if (cell !== null && cell !== "b" ) {
-        items.push( [rowIndex, colIndex, cell] );
-        console.log(items);
-      }
-    });
-  });
-  return items;
-};
+// SokobanGame.prototype.findItems = function () {
+//   var items = [];
+//   this.board.forEach(function (row, rowIndex) {
+//     row.forEach(function (cell, colIndex) {
+//       if (cell !== null && cell !== "b" ) {
+//         items.push( [rowIndex, colIndex, cell] );
+//         console.log(items);
+//       }
+//     });
+//   });
+//   return items;
+// };
 
 
 SokobanGame.prototype._getAvailablePosition = function () {
