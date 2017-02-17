@@ -1,14 +1,16 @@
 function SokobanGame() {
   this.board = [                      // ROW Index
-    [ "w",  "w",  "w",  "w",  "w",  "w",  "w",  "w",  "w",  "w",  "w",  "w",  "w",  "w",  "w",  "w" ], // 0
-    [ "w",  null, null, null, null, null, null, null, null, null, null, null, null, null, null, "w" ], // 1
-    [ "w",  null, null, null, null, null, null, null, "s", null, null, null, null, null, null,  "w" ], // 2
-    [ "w",  null, null, null, null, "t" , null, null, "b" , null, "s" , null, null, null, null, "w" ], // 3
-    [ "w",  null, null, null, null, null, null, null, null, null, null, null, null, null, null, "w" ], // 4
-    [ "w",  null, null, "t", null, null, null, null, null, null, null, null, null, null, null, "w" ], // 5
-    [ "w",  null, null, null, null, null, null, null, null, null, null, null, null, null, null, "w" ], // 6
-    [ "w",  "w",  "w",  "w",  "w",  "w",  "w",  "w",  "w",  "w",  "w",  "w",  "w",  "w",  "w",  "w" ], // 7
-    //   0     1     2     3     4    5     6     7    8     9    10     11   12     13   14    15
+    [ "w",  "w",  "w",  "w",  "w", "w",  "w",  "w",  "w",  "w",  "w",  "w",  null,  null], // 0
+    [ "w",  "t", "t", null, null, "w",  null, null, null, null, null, "w",  "w",  "w" ], // 1
+    [ "w",  "t", "t", null, null, "w",  null, "s", null, null, "s", null, null,  "w" ], // 2
+    [ "w",  "t", "t", null, null, "w",  "s",  "w", "w", "w", "w", null, null, "w" ], // 3
+    [ "w",  "t", "t", null, null, null, null, "b", null, "w", "w", null, null,  "w" ], // 4
+    [ "w",  "t", "t", null, null, "w",  null, "w",  null, null, "s", null, "w",  "w" ], // 5
+    [ "w",  "w",  "w", "w",  "w",  "w", null, "w",   "w", "s", null, "s", null,  "w" ], // 6
+    [ null, null, "w", null, "s" , null, null, "s",  null, "s", null, "s", null,  "w" ], // 7
+    [ null, null, "w", null, null, null, null, "w",  null, null, null, null, null,  "w" ], // 8
+    [ null, null, "w", "w",  "w",  "w",  "w",  "w",  "w",  "w",  "w",  "w",  "w",  "w" ], // 9
+    //   0     1     2     3     4    5     6     7    8     9    10     11   12     13
 ]; // COL Index
 this.direction = "Up";
 // this.movement = "";
@@ -142,19 +144,6 @@ SokobanGame.prototype._getCurrentLocation = function () {
   });
   return currentLocResult;
 };
-
-// SokobanGame.prototype.findItems = function () {
-//   var items = [];
-//   this.board.forEach(function (row, rowIndex) {
-//     row.forEach(function (cell, colIndex) {
-//       if (cell !== null && cell !== "b" ) {
-//         items.push( [rowIndex, colIndex, cell] );
-//         console.log(items);
-//       }
-//     });
-//   });
-//   return items;
-// };
 
 
 SokobanGame.prototype._getAvailablePosition = function () {
