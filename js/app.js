@@ -58,7 +58,7 @@ function updateBoard () {
     var rowDiv = $('<div class="row"></div>');
     $('.map').append(rowDiv);
     row.forEach(function (cell, cellIndex) {
-      if (cell === "b") {
+      if ((cell === "b") || (cell === "bt")) {
         var dozerEl = $('<div/>').addClass('tile').addClass('dozer');
         if (mySokobanGame.direction === 'Up') {
           dozerEl.css('transform', 'rotate(0deg)');
@@ -79,7 +79,7 @@ function updateBoard () {
         rowDiv.append('<div class="tile target"></div> ');
       } else if (cell === "w") {
         rowDiv.append('<div class="tile wall"></div> ');
-      } else if (cell === "s") {
+      } else if ((cell === "s") || (cell === "st")) {
         rowDiv.append('<div class="tile stone"></div> ');
       } else {
         rowDiv.append('<div class="tile"></div> ');
