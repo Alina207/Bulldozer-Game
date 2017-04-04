@@ -73,8 +73,8 @@ SokobanGame.prototype.movement = function () {
 
     var infront = this.board[infrontRow][infrontCol];
     var last = this.board[lastRow][lastCol];
-console.log("what was in front was: " + infront);
-console.log("what was really in front was: " + last);
+    console.log("what was in front was: " + infront);
+    console.log("what was really in front was: " + last);
     if (this.isInvalidMove(infront, last) === true) {
       return;
     }
@@ -126,6 +126,10 @@ SokobanGame.prototype.isInvalidMove = function (infrontCell, lastCell) {
   } else if ((infrontCell === "s") && (lastCell === "s")) {
     return true;
   } else if ((infrontCell === "s") && (lastCell === "w")) {
+    return true;
+  } else if ((infrontCell === "st") && (lastCell === "w")) {
+    return true;
+  } else if ((infrontCell === "st") && (lastCell === "st")) {
     return true;
   } else {
     return false;
